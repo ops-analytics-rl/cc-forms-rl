@@ -2,21 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting...</title>
   <script>
     window.onload = function () {
+      // Get the full URL parameters
       const params = new URLSearchParams(window.location.search);
-      const name = params.get('name');  // gets value from ?name=xyz
+      const name = params.get('name');
+      
+      // Debug: Log the parameters (remove this in production)
+      console.log('Current URL:', window.location.href);
+      console.log('Name parameter:', name);
+      
       if (name) {
-        const redirectUrl = `https://script.google.com/a/macros/rocketlearning.org/s/AKfycbwN93A3fMZ09uCJ7U4n14-qhZ_6E9IwJbaXa2hE52GbEg6OkGL7juUZOrFhdTPEoqyEJA/exec?name=${name}`;
-        window.location.href = redirectUrl;
+        // Construct the redirect URL with the name parameter
+        const redirectUrl = `https://script.google.com/a/macros/rocketlearning.org/s/AKfycbwN93A3fMZ09uCJ7U4n14-qhZ_6E9IwJbaXa2hE52GbEg6OkGL7juUZOrFhdTPEoqyEJA/exec?name=${encodeURIComponent(name)}`;
+        
+        // Debug: Log the redirect URL (remove this in production)
+        console.log('Redirecting to:', redirectUrl);
+        
+        // Add a small delay to ensure the page loads properly
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 500);
+        
+        // Update the page content to show what's happening
+        document.body.innerHTML = `
+          <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+            <h2>Redirecting...</h2>
+            <p>Redirecting to Google Apps Script with name: <strong>${name}</strong></p>
+            <p>If you're not redirected automatically, <a href="${redirectUrl}">click here</a></p>
+          </div>
+        `;
       } else {
-        document.body.innerHTML = '<h2>Missing name parameter. Use ?name=xyz</h2>';
+        document.body.innerHTML = `
+          <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+            <h2>Missing Parameter</h2>
+            <p>Please add the name parameter to the URL</p>
+            <p>Example: <code>?name=kavita.s</code></p>
+          </div>
+        `;
       }
     };
   </script>
 </head>
 <body>
-  <p>Redirecting...</p>
+  <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+    <h2>Loading...</h2>
+    <p>Please wait while we redirect you...</p>
+  </div>
 </body>
 </html>
