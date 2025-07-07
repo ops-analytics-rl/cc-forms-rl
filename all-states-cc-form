@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting...</title>
+  <script>
+    (function() {
+      const path = window.location.pathname;
+      const parts = path.split('/').filter(Boolean); // remove empty strings
+
+      // Expecting: /xx/namexyz
+      if (parts.length >= 2) {
+        const namexyz = parts[1]; // second segment
+        const redirectUrl = `https://script.google.com/a/macros/rocketlearning.org/s/AKfycbwN93A3fMZ09uCJ7U4n14-qhZ_6E9IwJbaXa2hE52GbEg6OkGL7juUZOrFhdTPEoqyEJA/exec?name=${namexyz}`;
+        window.location.href = redirectUrl;
+      } else {
+        document.body.innerHTML = `<h2>Invalid URL format. Use /xx/namexyz</h2>`;
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
