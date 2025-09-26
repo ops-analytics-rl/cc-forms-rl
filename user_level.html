@@ -16,7 +16,7 @@
       
       if (name) {
         // Construct the redirect URL with the name parameter
-        const redirectUrl = `https://script.google.com/a/macros/rocketlearning.org/s/AKfycbxrzRalKFOGLPW0qKKoDz-yNpU3330SyTlz3MhiT9dRCzgv43LkBR1OIwoAeSsAymMq3w/exec?name=${encodeURIComponent(name)}`;
+        const redirectUrl = `https://script.google.com/a/macros/rocketlearning.org/s/AKfycbwc4Uni1FZMqWiPtbSZna9FS8S2O51R66-BcPJgpdrCJiYOxjUUc7Z2_PyTDz1BXdmlZQ/exec?name=${encodeURIComponent(name)}`;
         
         // Debug: Log the redirect URL (remove this in production)
         console.log('Redirecting to:', redirectUrl);
@@ -29,7 +29,7 @@
         // Update the page content to show what's happening
         document.body.innerHTML = `
           <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
-            <h2>Redirecting... (CC form v3)</h2>
+            <h2>Redirecting... (CC form v4)</h2>
             <p>Redirecting to Google Apps Script with name: <strong>${name}</strong></p>
             <p>If you're not redirected automatically, <a href="${redirectUrl}">click here</a></p>
           </div>
